@@ -30,9 +30,12 @@
     <!-- ===========================
     STYLESHEETS
     =========================== -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
     <!-- ===========================
     FONTS & ICONS
@@ -239,23 +242,7 @@ body {font-family: Verdana,sans-serif;margin:0}
   background-color: #717171;
 }
 
-<!-- /* Fading animation --> initially 2s*/
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 2s;
-  animation-name: fade;
-  animation-duration: 2s;
-}
-/* opacity --> initially .4s*/
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}-->
+/* Fading animation --> initially 2s*/
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
@@ -322,19 +309,19 @@ body {font-family: Verdana,sans-serif;margin:0}
 <div class="row">
   <div class="col-sm-7">
     <h3>Have a question?</h3>
-    <span>ApiJam best friend with Facebook bot messenger, Twitter bot and Google Custom Search</span>
+    <span>ApiJam is best friend with Facebook bot messenger, Twitter bot and Google Custom Search</span>
   </div>
   
-    <div class="col-md-4"><img class="propic" src="img/qr-apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Ask ApiBot</p>
+    <div class="col-sm-4"><img class="propic" src="img/qr-apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Ask ApiBot</p>
     </div>
     <!--<div class="col-md-4">
     <img class="propic" src="img/qr-apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Ask ApiBot</p>
     </div>-->
 
-    <div class="col-md-4"><img class="propic" src="img/qr-apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Check ApiTweet</p>
+    <div class="col-sm-4"><img class="propic" src="img/apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Check ApiTweet</p>
     </div>
 
-    <div class="col-md-4"><img class="propic" src="img/qr-apibot.png" alt=""><a href="https://github.com/dnzengou/apijam"></a><p>Google on ApiSearch</p>
+    <div class="col-sm-4"><a class="fa fa-google" ><p>Google on ApiSearch</p></a>
     </div>
 
   </div>
@@ -365,7 +352,7 @@ google.setOnLoadCallback(function() {
 <style type='text/css'>
   .gsc-control-cse {
     font-family: Arial, sans-serif;
-    border-color: #3b5998;
+    border-color: #FFFFFF;
     background-color: #FFFFFF;
   }
   .gsc-control-cse .gsc-table-result {
