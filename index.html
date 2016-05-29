@@ -239,21 +239,21 @@ body {font-family: Verdana,sans-serif;margin:0}
   background-color: #717171;
 }
 
-/* Fading animation --> 1.5s*/
+/* Fading animation --> initially 1.5s*/
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 5s;
   animation-name: fade;
   animation-duration: 5s;
 }
-
+/* opacity --> initially 1.5s*/
 @-webkit-keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .2} 
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4} 
+  from {opacity: .2} 
   to {opacity: 1}
 }
 
@@ -262,50 +262,51 @@ body {font-family: Verdana,sans-serif;margin:0}
   .slprev, .slnext,.text {font-size: 11px}
 }
 </style>
-<body>
+
+<div class="row">
+  <div class="col-sm-7">
+    <h3>How it works</h3>
 
 <div class="slideshow-container">
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 5</div>
-  <img src="img/apij.jpg" style="width:100%">
+  <img src="img/apps-screen.png" style="width:100%">
   <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 5</div>
-  <img src="img/pain.jpg" style="width:100%">
-  <div class="text">the pain</div>
+  <img src="img/apps-launch.png" style="width:100%">
+  <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 5</div>
-  <img src="img/solution.jpg" style="width:100%">
-  <div class="text">the solution</div>
+  <img src="img/tomorrow-screen.png" style="width:100%">
+  <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">4 / 5</div>
-  <img src="img/team.jpg" style="width:100%">
-  <div class="text">the team</div>
+  <img src="img/notification-screen.png" style="width:100%">
+  <div class="text"></div>
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">5 / 5</div>
-  <img src="img/how.jpg" style="width:100%">
-  <div class="text">how it works</div>
+  <img src="img/map-screen.png" style="width:100%">
+  <div class="text"></div>
+  
 </div>
 
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
-
-</div>
 <br>
 
 <div style="text-align:center">
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span>
   <span class="dot" onclick="currentSlide(4)"></span>
 </div>
 
