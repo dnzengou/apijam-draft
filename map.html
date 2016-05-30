@@ -11,13 +11,13 @@ License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
         <title>Fusion Tables Layer Mouse Over</title>
         <style>
             body {
-                font-family: Roboto, sans-serif;
-				font-size: 14px;
+                font-family: Arial, sans-serif;
+				font-size: 12px;
             }
             <!-- 500px, 440px-->
             #map_canvas {
-                height: 1200px;
-                width: 600px;
+                height: 600px;
+                width: 440px;
             }
         </style>
         <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false">
@@ -80,7 +80,7 @@ License can be found here: http://code.google.com/apis/ajaxsearch/faq/#license
               map.setCenter(results[0].geometry.location);
               map.setZoom(searchZoom);
             } else {
-              window.alert('Location could not be geocoded: ' + status);
+              window.alert('Address could not be geocoded: ' + status);
             }
           });
         };
