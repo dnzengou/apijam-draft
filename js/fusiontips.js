@@ -22,8 +22,6 @@
     var div = document.createElement('DIV');
     div.style.border = "1px solid #999999";
 	div.style.opacity = ".9";
-    div.style.width = 100%;
-    div.style.height = 100%;
     div.style.position = "absolute";
     div.style.whiteSpace = "nowrap";
     div.style.backgroundColor = "#dae2d3";
