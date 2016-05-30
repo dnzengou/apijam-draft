@@ -21,11 +21,11 @@
   FusionTipOverlay.prototype.onAdd = function() {
     var div = document.createElement('DIV');
     div.style.border = "1px solid #999999";
-	div.style.opacity = ".85";
+	div.style.opacity = ".9";
     div.style.position = "absolute";
     div.style.whiteSpace = "nowrap";
-    div.style.backgroundColor = "#ffffff";
-    div.style.fontSize = '13px';
+    div.style.backgroundColor = "#dae2d3";
+    div.style.fontSize = '14px';
     div.style.padding = '10px';
     div.style.fontWeight = 'bold';
     div.style.margin = '10px';
