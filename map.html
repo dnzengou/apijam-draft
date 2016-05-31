@@ -1,1 +1,141 @@
-<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"/></head><body><iframe width="500" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2+from+1bpjVp3U_Etpq_57_lz_E4thrh-qXHSDs4jI4_doX&amp;containerId=googft-gviz-canvas"></iframe></body></html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Transit layer</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+
+     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"&amp;language=en&amp;callback=initMap&amp;>
+        </script>
+
+
+        <script type="text/javascript" src="js/fusiontips.js">
+        </script>
+        <script type="text/javascript" id="script">
+            
+            var map, layer;
+            var googleApiKey = "AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs"; // Get from Google API console https://code.google.com/apis/console
+      var geometryColumn = "latlon"; // geometry column name, may be Address for a points map
+      var tableid = '1bpjVp3U_Etpq_57_lz_E4thrh-qXHSDs4jI4_doX'; // Take from Fusion Tables About page
+      var defaultCenter = new google.maps.LatLng(50.8504, 4.3517); // Map centre in lat/lon for default and reset
+      var defaultZoom = 11; // Zoom level for default map view and reset
+      var searchZoom = 14; // Zoom level for map search
+      var geocodeBias = ", , " // Can add a bias to tack onto the end of address searches. Leave blank for none
+      var tooltipFields = "'Name', 'Address'" // Fields to show on tooltip
+      var delay = 100; // milliseconds mouse pause before send a server query. default 300.
+      var tolerance = 50; // tolerance in pixel around mouse. default is 6. want a bigger number for point maps
+            
+      function loadMap() {
+              //NOTE: you must use the encrypted tableid
+              var geocoder = new google.maps.Geocoder();
+        
+        layer = new google.maps.FusionTablesLayer({
+                query: {
+                  select: geometryColumn, // pulls geometry column name, may be Address for a points map
+                  from: tableid
+                },
+                map: map,
+        styleId: 2,
+        templateId: 2
+              });
+              layer.enableMapTips({
+                select: tooltipFields, // pulls list of columns to query, cam have only one column
+                from: tableid, // pulls fusion table name referenced above
+                geometryColumn: geometryColumn, // pulls geometry column name, may be Address for a points map
+                suppressMapTips: false, // optional, whether to show map tips. default false
+                delay: delay, // pulls milliseconds mouse pause before send a server query. default 300.
+                tolerance: tolerance, // pulls tolerance in pixel around mouse. default is 6. want a bigger number for point maps
+                googleApiKey: googleApiKey // pulls API key from above
+              });
+              map.setCenter(defaultCenter);
+              map.setZoom(defaultZoom);
+              addListeners();
+        
+                var zoomToAddress = function() {
+          var address = document.getElementById('address').value;
+      address = (address + geocodeBias);
+          geocoder.geocode({
+            address: address
+          }, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              map.setCenter(results[0].geometry.location);
+              map.setZoom(searchZoom);
+            } else {
+              window.alert('Address could not be geocoded: ' + status);
+            }
+          });
+        };
+        google.maps.event.addDomListener(document.getElementById('search'),
+            'click', zoomToAddress);
+        google.maps.event.addDomListener(window, 'keypress', function(e) {
+          if (e.keyCode == 13) {
+            zoomToAddress();
+          }
+        });
+        google.maps.event.addDomListener(document.getElementById('reset'),
+            'click', function() {
+              map.setCenter(defaultCenter);
+              map.setZoom(defaultZoom);
+              layer.setOptions({
+                query: {
+                  select: geometryColumn,
+                  from: tableid
+                }
+              });
+            });
+              
+            }
+            
+            function addListeners() {
+              google.maps.event.addListener(layer, 'mouseover', function(fEvent) {
+                var row = fEvent.row;
+              });
+            }
+            
+            function initialize() {
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: new google.maps.LatLng(defaultCenter),
+                zoom: defaultZoom,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+              });
+
+
+      var transitLayer = new google.maps.TransitLayer();
+  transitLayer.setMap(map);
+
+  var bikeLayer = new google.maps.BicyclingLayer();
+  bikeLayer.setMap(map);
+
+
+              loadMap();
+            }
+        </script>
+
+
+        </head>
+
+        <body onload="initialize();">
+
+<div>
+      <label>Zoom to your transport location:</label>
+      <input type="text" id="address" value="">
+      <input type="button" id="search" value="Search">
+      <input type="button" id="reset" value="Reset">
+    </div>
+  
+      <div id="map">
+        </div>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs&amp;language=en&amp;callback=initMap&amp;signed_in=true" async defer>
+    </script>-->
+  </body>
+</html>
